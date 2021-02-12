@@ -67,13 +67,13 @@ class YoutubeDLHelper(DownloadHelper):
 
     def __onDownloadProgress(self, d):
         if self.is_cancelled:
-            raise ValueError("CMembatalkan Download..")
-        if d['status'] == "selesai":
+            raise ValueError("Cancelling Download..")
+        if d['status'] == "finished":
             if self.is_playlist:
                 self.last_downloaded = 0
-        elif d['status'] == "Mendownload":
+        elif d['status'] == "downloading":
             with self.__resource_lock:
-                self.__download_speed = d['Kecepatan']
+                self.__download_speed = d['speed']
                 try:
                     tbyte = d['total_bytes']
                 except KeyError:
