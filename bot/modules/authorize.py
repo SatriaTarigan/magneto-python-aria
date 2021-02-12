@@ -19,9 +19,9 @@ def authorize(update,context):
             if chat_id not in AUTHORIZED_CHATS:
                 file.write(f'{chat_id}\n')
                 AUTHORIZED_CHATS.add(chat_id)
-                msg = 'Chat authorized'
+                msg = 'Chat diijinkan'
             else:
-                msg = 'Already authorized chat'
+                msg = 'Chat telah diijinkan'
         else:
             # Trying to authorize someone in specific
             user_id = reply_message.from_user.id
@@ -30,7 +30,7 @@ def authorize(update,context):
                 AUTHORIZED_CHATS.add(user_id)
                 msg = 'Person Authorized to use the bot!'
             else:
-                msg = 'Person already authorized'
+                msg = 'Pengguna diijinkan menggunakan bot'
         sendMessage(msg, context.bot, update)
 
 
@@ -50,9 +50,9 @@ def unauthorize(update,context):
         user_id = reply_message.from_user.id
         if user_id in AUTHORIZED_CHATS:
             AUTHORIZED_CHATS.remove(user_id)
-            msg = 'Person unauthorized to use the bot!'
+            msg = 'Pengguna tidak diijinkan menggunakan bot!'
         else:
-            msg = 'Person already unauthorized!'
+            msg = 'Pengguna tidak diijinkan!'
     with open('authorized_chats.txt', 'a') as file:
         file.truncate(0)
         for i in AUTHORIZED_CHATS:
