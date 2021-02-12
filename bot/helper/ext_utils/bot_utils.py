@@ -13,13 +13,13 @@ URL_REGEX = r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+"
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_WAITING = "Queued...📝"
-    STATUS_FAILED = "Failed 🚫. Cleaning download"
-    STATUS_CANCELLED = "Cancelled ❎"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
+    STATUS_UPLOADING = "Mengupload...✅"
+    STATUS_DOWNLOADING = "Mendownload...📥"
+    STATUS_WAITING = "Dalam antrian...📝"
+    STATUS_FAILED = "Gagal 🚫. Menghapus download"
+    STATUS_CANCELLED = "Dibatalkan ❎"
+    STATUS_ARCHIVING = "Mengarsipkan...🔐"
+    STATUS_EXTRACTING = "Mengekstrak...📂"    
 
 
 PROGRESS_MAX_SIZE = 100 // 8
@@ -92,7 +92,7 @@ def get_readable_message():
     with download_dict_lock:
         msg = ""
         for download in list(download_dict.values()):
-            msg += f"<b>Filename :</b> <code>{download.name()}</code>"
+            msg += f"<b>Nama file :</b> <code>{download.name()}</code>"
             msg += f"\n<b>Status :</b> <i>{download.status()}</i>"
             if download.status() != MirrorStatus.STATUS_ARCHIVING and download.status() != MirrorStatus.STATUS_EXTRACTING:
                 msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
@@ -118,15 +118,15 @@ def get_readable_time(seconds: int) -> str:
     (days, remainder) = divmod(seconds, 86400)
     days = int(days)
     if days != 0:
-        result += f'{days}d'
+        result += f'{hari}d'
     (hours, remainder) = divmod(remainder, 3600)
     hours = int(hours)
     if hours != 0:
-        result += f'{hours}h'
+        result += f'{jam}h'
     (minutes, seconds) = divmod(remainder, 60)
     minutes = int(minutes)
     if minutes != 0:
-        result += f'{minutes}m'
+        result += f'{menit}m'
     seconds = int(seconds)
     result += f'{seconds}s'
     return result
