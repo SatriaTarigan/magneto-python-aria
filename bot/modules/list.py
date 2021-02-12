@@ -10,17 +10,17 @@ def list_drive(update,context):
     try:
         search = update.message.text.split(' ',maxsplit=1)[1]
         LOGGER.info(f"Searching: {search}")
-        reply = sendMessage('Sedang mencari..... Tunggu sebentar!', context.bot, update)
+        reply = sendMessage('Searching..... Please wait!', context.bot, update)
         gdrive = GoogleDriveHelper(None)
         msg, button = gdrive.drive_list(search)
 
         if button:
             editMessage(msg, reply, button)
         else:
-            editMessage('Tidak ada hasil ditemukan', reply, button)
+            editMessage('No result found', reply, button)
 
     except IndexError:
-        sendMessage('masukan kata kunci beserta perintah', context.bot, update)
+        sendMessage('send a search key along with command', context.bot, update)
 
 
 list_handler = CommandHandler(BotCommands.ListCommand, list_drive,filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
