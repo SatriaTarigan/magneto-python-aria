@@ -85,6 +85,10 @@ help - Get Detailed Help
 log - Bot Log [owner only]
 ```
 
+# How to deploy in Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SatriaTarigan/magneto-python-aria)
+
 # How to deploy?
 Deploying is pretty much straight forward and is divided into several steps as follows:
 ## Installing requirements
