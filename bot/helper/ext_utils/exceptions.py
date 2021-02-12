@@ -1,8 +1,8 @@
 class DirectDownloadLinkException(Exception):
-    """Tidak ditemukan metode yang mendukung pengekstrakan"""
+    """Not method found for extracting direct download link from the http link"""
     pass
 
 
 class NotSupportedExtractionArchive(Exception):
-    """Tipe arsip tidak mendukung pengekstrakan"""
+    """The archive format use is trying to extract is not supported"""
     pass
