@@ -122,11 +122,11 @@ def get_readable_time(seconds: int) -> str:
     (hours, remainder) = divmod(remainder, 3600)
     hours = int(hours)
     if hours != 0:
-        result += f'{jam}h'
+        result += f'{hours}h'
     (minutes, seconds) = divmod(remainder, 60)
     minutes = int(minutes)
     if minutes != 0:
-        result += f'{menit}m'
+        result += f'{minutes}m'
     seconds = int(seconds)
     result += f'{seconds}s'
     return result
